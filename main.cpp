@@ -20,7 +20,7 @@ protected:
 public:
     explicit Real(const double real = 0.0);
     double GetReal() const;
-    Real& operator*(const double) const;
+    Real operator*(const double) const;
 };
 
 class Complex : public Real
@@ -32,7 +32,7 @@ public:
     const double real = 0.0,
     const double imaginary = 0.0);
     double GetImaginary() const;
-    Complex& operator*(const double) const;
+    Complex operator*(const double) const;
 };
 
 class Surreal : public Complex
@@ -45,7 +45,7 @@ public:
     const double imaginary = 0.0,
     const double surreal = 0.0);
     double GetSurreal() const;
-    Surreal& operator*(const double) const;
+    Surreal operator*(const double) const;
 };
 
 
@@ -61,7 +61,7 @@ double Real::GetReal() const
     return real;
 }
 
-Real& Real::operator*(const double real) const
+Real Real::operator*(const double real) const
 {
     Real Obj{ (this->real * real) };
 return Obj;
@@ -80,7 +80,7 @@ double Complex::GetImaginary() const
     return imaginary;
 }
 
-Complex& Complex::operator*(const double real) const
+Complex Complex::operator*(const double real) const
 {
     Complex Obj{ (this->real * real), (this->imaginary * real) };
     return Obj;
@@ -100,7 +100,7 @@ double Surreal::GetSurreal() const
     return surreal;
 }
 
-Surreal& Surreal::operator*(const double real) const
+Surreal Surreal::operator*(const double real) const
 {
     Surreal Obj{ (this->real * real), (this->imaginary * real), (this->surreal * real) };
     return Obj;
